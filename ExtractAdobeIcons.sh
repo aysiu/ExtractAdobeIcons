@@ -2,6 +2,9 @@
 
 # Extracts .png icons from installed Adobe Creative Cloud .app bundles
 
+# Make a folder on the desktop to hold the extracted icons
+/bin/mkdir -p ~/Desktop/AdobeIcons/
+
 # Find the Adobe .app bundles
 # Exclude the general Adobe directory as well as the one in Utilities
 find /Applications -name "Adobe *.app" -maxdepth 2 -not -path "/Applications/Adobe/*" -not -path "/Applications/Utilities*" | while read line; do
@@ -20,5 +23,5 @@ find /Applications -name "Adobe *.app" -maxdepth 2 -not -path "/Applications/Ado
       appName=$(/usr/bin/basename "$line" .app)
    fi
    # Create a .png of the .icns on the desktop
-   sips -s format png "$line"/Contents/Resources/"$icnsName" --out ~/Desktop/"$appName".png
+   sips -s format png "$line"/Contents/Resources/"$icnsName" --out ~/Desktop/AdobeIcons/"$appName".png
 done

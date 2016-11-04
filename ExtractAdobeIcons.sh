@@ -22,6 +22,6 @@ find /Applications -name "Adobe *.app" -maxdepth 2 -not -path "/Applications/Ado
    if [ -z "$appName" ]; then
       appName=$(/usr/bin/basename "$line" .app)
    fi
-   # Create a .png of the .icns on the desktop
-   sips -s format png "$line"/Contents/Resources/"$icnsName" --out ~/Desktop/AdobeIcons/"$appName".png
+   # Create a 350x350 .png of the .icns on the desktop
+   sips -z 350 350 -s format png "$line"/Contents/Resources/"$icnsName" --out ~/Desktop/AdobeIcons/"$appName".png
 done
